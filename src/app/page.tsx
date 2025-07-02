@@ -1,8 +1,13 @@
-'use client';
+
 
 import Head from 'next/head';
 import * as React from 'react';
 import '@/lib/env';
+import Navbar from '@/components/home/Navbar';
+import Hero from '@/components/home/Hero';
+import Program from '@/components/home/Programs';
+import Industry from '@/components/home/Industry';
+import Career from '@/components/home/Career';
 
 
 
@@ -24,9 +29,10 @@ export default function HomePage() {
       <Head>
         <title>Hi</title>
       </Head>
-      <section className='bg-white'>
-        <h1>Hello Aviral Ai !</h1>
-      </section>
+      <Hero />
+      <Program />
+      <Industry />
+      <Career />
     </main>
   );
 }
