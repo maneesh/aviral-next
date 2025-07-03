@@ -8,6 +8,8 @@ import Hero from '@/components/home/Hero';
 import Program from '@/components/home/Programs';
 import Industry from '@/components/home/Industry';
 import Career from '@/components/home/Career';
+import Testimonials from '@/components/home/Testimonials';
+import Footer from '@/components/home/Footer';
 
 
 
@@ -33,6 +35,8 @@ export default function HomePage() {
       <Program />
       <Industry />
       <Career />
+      < Testimonials />
+      <Footer />
     </main>
   );
 }
