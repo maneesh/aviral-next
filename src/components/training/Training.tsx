@@ -10,9 +10,9 @@ const Training: React.FC = () => {
     return (
         <>
             <TBanner />
-            {/* <CoursePage />
+            <CoursePage />
             <FAQSection />
-            <Footer /> */}
+            <Footer />
         </>
     );
 };

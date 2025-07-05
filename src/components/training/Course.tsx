@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import learnRobotImg from '../../../public/images/learnRobotImg.png';
+import { SiTicktick } from "react-icons/si";
 
 export default function CoursePage() {
   return (
@@ -23,7 +24,7 @@ export default function CoursePage() {
             <ul className="space-y-4">
               {Array(4).fill(0).map((_, idx) => (
                 <li key={idx} className="flex items-start gap-4">
-                  <span className="text-green-400 text-lg">✔</span>
+                  <span className="text-green-400 mt-0.5 mr-2"><SiTicktick /></span>
                   <span>Create advanced projects under guidance by the top 1%</span>
                 </li>
               ))}
@@ -44,14 +45,19 @@ export default function CoursePage() {
           <h3 className="text-2xl md:text-3xl font-bold text-green-400 mb-8">Key Benefits</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {benefits.map((benefit, index) => (
-              <div key={index} className="border border-gray-700 p-6 rounded-lg hover:shadow-lg transition">
-                <div className="text-2xl mb-4">{benefit.icon}</div>
-                <h4 className="text-xl font-semibold text-green-400 mb-2">{benefit.title}</h4>
-                <p className="text-gray-300 text-sm">{benefit.description}</p>
+              <div
+                key={index}
+                className="border border-green-400 p-6 rounded-lg hover:shadow-lg transition"
+              >
+                <div className="flex justify-center text-white text-3xl mb-4">{benefit.icon}</div>
+                <h4 className="text-xl font-semibold text-green-400 mb-2 text-center">{benefit.title}</h4>
+                <p className="text-gray-300 text-sm text-center">{benefit.description}</p>
               </div>
             ))}
           </div>
         </div>
+
+
       </div>
     </div>
   );

@@ -24,6 +24,9 @@ const Hero = () => {
         priority
       />
 
+      {/* Black top section above green line */}
+      <div className="absolute top-0 left-0 w-full h-[50px] bg-black z-20" />
+
       {/* Green line */}
       <div className="absolute top-[50px] left-0 w-full h-[3px] bg-green-500 z-30" />
 

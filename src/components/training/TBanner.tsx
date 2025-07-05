@@ -24,32 +24,35 @@ const TBanner = () => {
         priority
       />
 
+      {/* Black top section above green line */}
+      <div className="absolute top-0 left-0 w-full h-[50px] bg-black z-20" />
+
       {/* Green line */}
       <div className="absolute top-[50px] left-0 w-full h-[3px] bg-green-500 z-30" />
 
       {/* Top Robot and Branding */}
-      <div className="relative z-20 flex flex-col md:flex-row mx-auto items-center justify-center gap-12 max-w-7xl px-12 mx-auto py-8 h-full">
+      <div className="relative z-40 flex flex-col md:flex-row mx-auto items-center justify-between max-w-7xl px-6 md:px-12 py-8 h-full">
         <div className="text-center md:text-left md:w-1/2">
-          <h1 className="text-4xl md:text-5xl font-bold">
-            aviral<span className="text-green-500">ai</span>{" "}
-            <span className="text-white">Traning</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-white">
+            <span className="text-white">aviral</span>
+            <span className="text-green-500">ai</span>{" "}
+            <span className="text-white">Training</span>
           </h1>
-          <p className="text-gray-300 mt-2 max-w-md text-sm md:text-base">
+          <p className="text-gray-300 mt-4 max-w-md text-sm md:text-base">
             Create advanced projects under guidance by the top 1%.<br />
             Gain technologies through hands-on learning. Secure your desired future.
           </p>
         </div>
-        <div className="md:mt-0 md:w-1/2 flex justify-center">
+        <div className="mt-8 md:mt-0 md:w-1/2 flex justify-center">
           <Image
             src={robotBannerImgAbout}
             alt="Top Robot"
-            width={150}
-            height={150}
+            width={220}
+            height={220}
             className="mx-auto"
           />
         </div>
       </div>
-
 
     </section>
   );

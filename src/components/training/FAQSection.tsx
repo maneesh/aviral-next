@@ -1,4 +1,5 @@
 import React from 'react';
+import { SiTicktick } from "react-icons/si";
 
 export default function FAQSection() {
   const faqs = [
@@ -23,12 +24,13 @@ export default function FAQSection() {
           {faqs.map((faq, idx) => (
             <div key={idx}>
               <div className="flex items-start gap-4">
-                <span className="text-green-400 text-2xl">✔</span>
+                <span className="text-green-400 mt-0.5 mr-2"><SiTicktick /></span>
                 <h3 className="text-xl md:text-2xl text-green-400 font-semibold">
                   {faq.question}
                 </h3>
               </div>
-              <p className="ml-8 mt-2 text-gray-300 text-sm md:text-base">
+              <p className="ml-8 mt-2 text-gray-300 text-sm">
+
                 {faq.answer}
               </p>
             </div>
