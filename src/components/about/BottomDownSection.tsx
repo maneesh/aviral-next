@@ -1,12 +1,9 @@
 'use client';
-import { useEffect } from "react";
+
 import Image from "next/image";
 
 
-type ContentItem = {
-    type:'text'| 'image';
-    data:string;
-}
+
 interface BottomDownSectionProp{
     bottomDownData: any[];
 }

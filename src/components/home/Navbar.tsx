@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const menuItems = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
+    { name: "About", path: "/aviralai-about" },
     { name: "How It Works", path: "/aviralai-how-it-works" },
     { name: "Training", path: "/aviralai-training" },
     { name: "Contact us", path: "/aviralai-contact" },

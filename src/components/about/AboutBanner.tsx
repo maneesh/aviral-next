@@ -2,7 +2,6 @@
 import Navbar from "../home/Navbar";
 import Image from "next/image"
 import React from "react";
-import { useEffect } from "react";
 
 type ContentItem = {
   type: 'text' | 'image';

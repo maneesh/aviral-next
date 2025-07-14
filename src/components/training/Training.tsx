@@ -1,7 +1,7 @@
 import React from 'react';
-import TBanner from './TBanner';
 import CoursePage from './Course';
 import FAQSection from './FAQSection';
+import TBanner from './TBanner';
 import Footer from '../home/Footer';
 
 
