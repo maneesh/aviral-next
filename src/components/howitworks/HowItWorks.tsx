@@ -8,13 +8,13 @@ import Pathtoai from "./Pathtoai";
 function HowItWorks(){
     return(
         <>
-        <HowItWorksBanner />
-        <Pathtoai />
-        <MentorSection />
-        <MentorBottom />
-        <Footer />
+            <HowItWorksBanner />
+            <Pathtoai />
+            <MentorSection />
+            <MentorBottom />
+            <Footer />
         </>
-       
+
     );
 };
 
