@@ -10,9 +10,9 @@ const Navbar = () => {
   const menuItems = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "How It Works", path: "/how-it-works" },
-    { name: "Training", path: "/arivalai-training" },
-    { name: "Contact us", path: "/contact" },
+    { name: "How It Works", path: "/aviralai-how-it-works" },
+    { name: "Training", path: "/aviralai-training" },
+    { name: "Contact us", path: "/aviralai-contact" },
   ];
 
   const handleMenuClick = (item: any) => {

@@ -3,7 +3,16 @@
 import Navbar from "./Navbar";
 import Image from "next/image";
 
-const Hero = () => {
+interface HeroProps {
+  data: { type: string; data: string }[];
+}
+
+const Hero = ({ data }: HeroProps) => {
+  const image = data.find((item) => item.type === "image")?.data || "";
+  const texts = data.filter((item) => item.type === "text").map((item) => item.data);
+
+  const [title1, title2, subtitle, para1, para2, para3, buttonText] = texts;
+
   return (
     <section className="relative w-full min-h-screen overflow-hidden overflow-x-hidden z-10">
       {/* Background gradient */}
@@ -17,7 +26,7 @@ const Hero = () => {
 
       {/* Background image */}
       <Image
-        src="/images/bannerImg.png"
+        src={image || "/images/bannerImg.png"}
         alt="Hero Background"
         fill
         className="object-cover z-10 opacity-60"
@@ -40,18 +49,20 @@ const Hero = () => {
         {/* Hero text */}
         <div className="w-full md:w-2/3 text-center md:text-left mt-10 md:mt-0">
           <h1 className="text-4xl md:text-6xl font-bold mb-2">
-            aviral<span className="text-green-500">ai</span>
+            {title1}
+            <span className="text-green-500">{title2}</span>
           </h1>
           <h2 className="text-xl md:text-2xl font-semibold text-green-500 mb-4">
-            Your Learning Hub
+            {subtitle}
           </h2>
           <p className="text-sm md:text-base text-gray-300 mb-6">
-            Create advanced projects under guidance by the top 1% <br />
-            Gain expertise in the latest technologies through hands-on training.
-            <br /> Secure your desired position at...
+            {para1} <br />
+            {para2}
+            <br />
+            {para3}
           </p>
           <button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-2 rounded-full transition">
-            Lorem
+            {buttonText}
           </button>
         </div>
       </div>

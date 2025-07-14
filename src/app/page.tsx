@@ -1,9 +1,7 @@
-
-
 import Head from 'next/head';
 import * as React from 'react';
 import '@/lib/env';
-import Navbar from '@/components/home/Navbar';
+
 import Hero from '@/components/home/Hero';
 import Program from '@/components/home/Programs';
 import Industry from '@/components/home/Industry';
@@ -11,31 +9,50 @@ import Career from '@/components/home/Career';
 import Testimonials from '@/components/home/Testimonials';
 import Footer from '@/components/home/Footer';
 
+async function getData() {
+  const domain = 'aviralai.com';
+  const page = 'Home';
 
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/static?domain=${domain}&page=${encodeURIComponent(page)}`,
+    { cache: 'no-store' }
+  );
 
-/**
- * SVGR Support
- * Caveat: No React Props Type.
- *
- * You can override the next-env if the type is important to you
- * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
- */
+  if (!res.ok) {
+    const errorText = await res.text();
+    console.error('API error response:', errorText);
+    throw new Error('Failed to fetch page data');
+  }
 
-// !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
-// Before you begin editing, follow all comments with `STARTERCONF`,
-// to customize the default configuration.
+  const data = await res.json();
+  const all = data?.sections ?? [];
 
-export default function HomePage() {
+  // console.log('All Data in Home Page Response:', JSON.stringify(all, null, 2));
+
+  return {
+    hero: all.find((s: any) => s.name === 'Hero')?.contents || [],
+    program: all.find((s: any) => s.name === 'Program')?.contents || [],
+    industry: all.find((s: any) => s.name === 'IndustryExpert')?.contents || [],
+    chooseUs: all.find((s: any) => s.name === 'ChooseUs')?.contents || [],
+    career: all.find((s: any) => s.name === 'Career')?.contents || [],
+    testimonials: all.find((s: any) => s.name === 'Testimonials')?.contents || [],
+  };
+}
+
+export default async function HomePage() {
+  const sections = await getData();
+
   return (
     <main>
       <Head>
-        <title>Hi</title>
+        <title>Aviral AI - Home</title>
       </Head>
-      <Hero />
-      <Program />
-      <Industry />
-      <Career />
-      <Testimonials />
+
+      <Hero data={sections.hero} />
+      <Program data={sections.program} />
+      <Industry data={sections.industry} chooseUsData={sections.chooseUs} />
+      <Career data={sections.career} />
+      <Testimonials data={sections.testimonials} />
       <Footer />
     </main>
   );
