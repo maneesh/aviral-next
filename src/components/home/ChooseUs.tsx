@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import SecondRobotImg from '../../../public/images/secondRobot.png';
 import glowLeftImg from '../../../public/images/glowLeftImg.png';
-import { SiTicktick } from "react-icons/si";
+import { FaCheckCircle } from "react-icons/fa";
 
 const ChooseUs: React.FC = () => {
   return (
@@ -38,17 +38,17 @@ const ChooseUs: React.FC = () => {
           </h2>
 
           <p className="flex items-start text-sm text-gray-300 leading-snug">
-            <span className="text-green-400 mt-0.5 mr-2"><SiTicktick /></span>
+            <span className="text-green-400 mt-0.5 mr-2"><FaCheckCircle /></span>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quibusdam.
           </p>
 
           <p className="flex items-start text-sm text-gray-200 leading-snug">
-            <span className="text-green-400 mt-0.5 mr-2"><SiTicktick /></span>
+            <span className="text-green-400 mt-0.5 mr-2"><FaCheckCircle /></span>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit doloremque maxime.
           </p>
 
           <p className="flex items-start text-sm text-gray-200 leading-snug">
-            <span className="text-green-400 mt-0.5 mr-2"><SiTicktick /></span>
+            <span className="text-green-400 mt-0.5 mr-2"><FaCheckCircle /></span>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ullam minus.
           </p>
         </div>

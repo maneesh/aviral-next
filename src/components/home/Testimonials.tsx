@@ -1,4 +1,4 @@
-import { SiTicktick } from "react-icons/si";
+import { FaCheckCircle } from "react-icons/fa";
 
 const Testimonials = () => {
   return (
@@ -21,11 +21,11 @@ const Testimonials = () => {
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2 text-gray-700">
-                <SiTicktick className="text-green-600 mt-1" />
+                <FaCheckCircle className="text-green-600 mt-1" />
                 Create advanced projects under guidance
               </li>
               <li className="flex items-start gap-2 text-gray-700">
-                <SiTicktick className="text-green-600 mt-1" />
+                <FaCheckCircle className="text-green-600 mt-1" />
                 by the Calm expertise in the latest technologies
               </li>
             </ul>
@@ -44,11 +44,11 @@ const Testimonials = () => {
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2 text-gray-700">
-                <SiTicktick className="text-green-600 mt-1" />
+                <FaCheckCircle className="text-green-600 mt-1" />
                 Create advanced projects under guidance
               </li>
               <li className="flex items-start gap-2 text-gray-700">
-                <SiTicktick className="text-green-600 mt-1" />
+                <FaCheckCircle className="text-green-600 mt-1" />
                 by the Calm expertise in the latest technologies
               </li>
             </ul>

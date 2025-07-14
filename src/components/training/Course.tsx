@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import learnRobotImg from '../../../public/images/learnRobotImg.png';
-import { SiTicktick } from "react-icons/si";
+import { FaCheckCircle } from "react-icons/fa";
 
 export default function CoursePage() {
   return (
@@ -24,7 +24,7 @@ export default function CoursePage() {
             <ul className="space-y-4">
               {Array(4).fill(0).map((_, idx) => (
                 <li key={idx} className="flex items-start gap-4">
-                  <span className="text-green-400 mt-0.5 mr-2"><SiTicktick /></span>
+                  <span className="text-green-400 mt-0.5 mr-2"><FaCheckCircle /></span>
                   <span>Create advanced projects under guidance by the top 1%</span>
                 </li>
               ))}

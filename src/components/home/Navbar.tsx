@@ -15,7 +15,7 @@ const Navbar = () => {
     { name: "Contact us", path: "/contact" },
   ];
 
-  const handleMenuClick = (item) => {
+  const handleMenuClick = (item: any) => {
     setActiveItem(item.name);
     router.push(item.path);
     setShowMenu(false);
