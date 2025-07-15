@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);

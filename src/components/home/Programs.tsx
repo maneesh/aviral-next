@@ -1,12 +1,13 @@
 "use client";
 
-import ProgramCard from "./ProgramCard";
 import {
-  FaDatabase,
-  FaChartBar,
-  FaRobot,
   FaChalkboardTeacher,
+  FaChartBar,
+  FaDatabase,
+  FaRobot,
 } from "react-icons/fa";
+
+import ProgramCard from "./ProgramCard";
 
 const ICON_MAP: Record<string, JSX.Element> = {
   "Data Science": <FaDatabase />,

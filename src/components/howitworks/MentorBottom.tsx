@@ -9,7 +9,6 @@ interface MentorBottomProps {
   mentorBottom: MentorItem[];
 }
 const MentorBottom = ({mentorBottom}:MentorBottomProps)=>{
-  console.log(mentorBottom);
   
     const mentorBottomIconImg = mentorBottom?.[2]?.data;
     const mentorRoboImg = mentorBottom?.[1]?.data;

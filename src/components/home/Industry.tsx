@@ -1,6 +1,7 @@
 import React from 'react';
-import IndustryExpert from './IndustryExpert';
+
 import ChooseUs from './ChooseUs';
+import IndustryExpert from './IndustryExpert';
 
 interface Props {
   data: any[];         // IndustryExpert data

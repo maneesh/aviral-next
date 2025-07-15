@@ -2,12 +2,12 @@ import Head from 'next/head';
 import * as React from 'react';
 import '@/lib/env';
 
-import Hero from '@/components/home/Hero';
-import Program from '@/components/home/Programs';
-import Industry from '@/components/home/Industry';
 import Career from '@/components/home/Career';
-import Testimonials from '@/components/home/Testimonials';
 import Footer from '@/components/home/Footer';
+import Hero from '@/components/home/Hero';
+import Industry from '@/components/home/Industry';
+import Program from '@/components/home/Programs';
+import Testimonials from '@/components/home/Testimonials';
 
 async function getData() {
   const domain = 'aviralai.com';

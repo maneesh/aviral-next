@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
+import React from 'react';
+import { BiSolidPlaneAlt } from 'react-icons/bi';
 import { FaCheckCircle } from 'react-icons/fa';
 import { IoSettings } from 'react-icons/io5';
-import { BiSolidPlaneAlt } from 'react-icons/bi';
+
 import leftSideImg from '../../../public/images/trainingLeft.png';
 import rightSideImg from '../../../public/images/trainingRightImg.png';
 

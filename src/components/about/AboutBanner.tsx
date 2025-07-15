@@ -1,8 +1,9 @@
 "use client";
 
-import Navbar from "../home/Navbar";
 import Image from "next/image";
 import React from "react";
+
+import Navbar from "../home/Navbar";
 
 type ContentItem = {
   type: "text" | "image";
@@ -36,7 +37,7 @@ const AboutBanner: React.FC<BannerSectionProps> = ({ bannerData }) => {
         </div>
 
         {/* Heading Text */}
-        <div className="w-full md:w-1/3 text-center md:text-left">
+        <div className="w-full md:w-1/3 text-center md:text-left mt-[25px] sm:mt-[50px]">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-bold">
             {bannerData?.[1]?.data}
             <span className="text-[#3ae51d]">{bannerData?.[2]?.data}</span>

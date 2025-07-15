@@ -1,5 +1,6 @@
-import Training from '@/components/training/Training';
 import React from 'react';
+
+import Training from '@/components/training/Training';
 
 
 async function getData() {

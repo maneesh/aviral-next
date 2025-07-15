@@ -1,10 +1,10 @@
 'use client';
 
-import Footer from "../home/Footer";
 import HowItWorksBanner from "./HowItWorksBanner";
 import MentorBottom from "./MentorBottom";
 import MentorSection from "./MentorSection";
 import Pathtoai from "./Pathtoai";
+import Footer from "../home/Footer";
 
 interface SectionProps {
   sections: {

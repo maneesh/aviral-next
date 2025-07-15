@@ -1,5 +1,6 @@
 // Training.tsx
 import React from 'react';
+
 import CoursePage from './Course';
 import FAQSection from './FAQSection';
 import TBanner from './TBanner';

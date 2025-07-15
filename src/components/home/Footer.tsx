@@ -1,12 +1,13 @@
 import { Mail, Phone } from 'lucide-react';
-import footerBgImg from '../../../public/images/footerbg.png';
+import Image from 'next/image';
 import {
     FaFacebookF,
-    FaTwitter,
     FaInstagram,
+    FaTwitter,
     FaWhatsapp,
 } from 'react-icons/fa';
-import Image from 'next/image';
+
+import footerBgImg from '../../../public/images/footerbg.png';
 
 const Footer = () => {
     return (

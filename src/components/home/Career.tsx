@@ -1,10 +1,10 @@
 'use client';
 
 import Image from "next/image";
-import { MdEdit } from "react-icons/md";
-import { HiBriefcase } from "react-icons/hi";
-import { BsShieldCheck } from "react-icons/bs";
 import React from "react";
+import { BsShieldCheck } from "react-icons/bs";
+import { HiBriefcase } from "react-icons/hi";
+import { MdEdit } from "react-icons/md";
 
 interface CareerProps {
   data: {

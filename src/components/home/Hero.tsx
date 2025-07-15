@@ -1,7 +1,8 @@
 "use client";
 
-import Navbar from "./Navbar";
 import Image from "next/image";
+
+import Navbar from "./Navbar";
 
 interface HeroProps {
   data: { type: string; data: string }[];

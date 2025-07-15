@@ -3,9 +3,6 @@ const nextConfig = {
   eslint: {
     dirs: ['src'],
   },
-  images: {
-    domains: ['ik.imagekit.io'],
-  },
 
   reactStrictMode: true,
   swcMinify: true,

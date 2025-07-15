@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
-import glowLeftImg from '../../../public/images/glowLeftImg.png';
+import React from 'react';
 import { FaCheckCircle } from "react-icons/fa";
+
+import glowLeftImg from '../../../public/images/glowLeftImg.png';
 
 interface Props {
   title: string;

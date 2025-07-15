@@ -1,9 +1,9 @@
 
 import AboutBanner from "@/components/about/AboutBanner"
-import UpperSection from "@/components/about/UpperSection";
-import TeamSection from "@/components/about/TeamSection";
-import BottomUpSection from "@/components/about/BottomUpSection";
 import BottomDownSection from "@/components/about/BottomDownSection";
+import BottomUpSection from "@/components/about/BottomUpSection";
+import TeamSection from "@/components/about/TeamSection";
+import UpperSection from "@/components/about/UpperSection";
 import Footer from "@/components/home/Footer"
 
 async function getData() {

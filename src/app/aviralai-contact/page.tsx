@@ -1,8 +1,8 @@
 
-import Footer from "@/components/home/Footer";
 import ContactBanner from "@/components/contact/ContactBanner";
 import ContactInformation from "@/components/contact/ContactInformation";
 import GetInTouchSection from "@/components/contact/GetInTouchSection";
+import Footer from "@/components/home/Footer";
 
 async function getData() {
   const domain = 'aviralai.com';
@@ -13,8 +13,6 @@ async function getData() {
   });
 
   if (!res.ok) {
-    const errorText = await res.text();
-    console.error('API error response:', errorText);
     throw new Error('Failed to fetch page data');
   }
 
