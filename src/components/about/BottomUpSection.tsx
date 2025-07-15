@@ -1,62 +1,87 @@
-
-
+'use client';
+import React from "react";
 
 import Image from "next/image";
 
-const BottomUpSection = ()=>{
+type ContentItem = {
+    type:'text'| 'image';
+    data:string;
+}
+interface BottomUpSectionProp{
+    bottomUpData:ContentItem[];
+}
+const BottomUpSection:React.FC<BottomUpSectionProp> = ({bottomUpData})=>{
+
+    //console.log(bottomUpData)
+        
+      const tick = bottomUpData?.[2]?.data
+      const okimage = bottomUpData?.[13]?.data
+
     return (
         <section className="flex items-center justify-center p-10 bg-black text-white">
             <div className="flex flex-col md:flex-row md:space-x-20">
                 <div>
-                    <h1 className="py-5 ml-5">What Sets <span className="text-[#3ae51d]">Us Apart</span> </h1>
+                    <h1 className="py-5 ml-5">{bottomUpData?.[0]?.data} <span className="text-[#3ae51d]">{bottomUpData?.[1]?.data}</span> </h1>
                     <ul>
                         <li className="flex items-start gap-2">
+                        {tick && (
                             <Image
-                            src="/images/tick.jpg"
+                            src={tick}
                             alt="tick"
                             width={16}
                             height={16}
                              />
-                            <span>Lorem ipsum is simply dummy text of the printing and <br />
-                            Lorem ipsum has been the industry's.</span>
+                        )}
+                            
+                            <span>{bottomUpData?.[3]?.data} <br />
+                            {bottomUpData?.[4]?.data}</span>
                         </li>
                         <li className="py-5 flex items-start gap-2">
+                           {tick && (
                             <Image
-                            src="/images/tick.jpg"
+                            src={tick}
                             alt="tick"
                             width={16}
                             height={16}
                              />
-                            <p>when an unknown printer took a galley of type and scrambled <br />
-                               specimen book. It has survived.</p>
+                        )}
+                            <p>{bottomUpData?.[6]?.data} <br />
+                               {bottomUpData?.[7]?.data}</p>
                         </li>
                         <li className="pb-5 flex items-start gap-2">
+                          {tick && (
                             <Image
-                            src="/images/tick.jpg"
+                            src={tick}
                             alt="tick"
                             width={16}
                             height={16}
                              />
-                            <p>1960s with the release of Letraset sheets containing Lorem</p>
+                        )}
+                            <p>{bottomUpData?.[9]?.data}</p>
                         </li>
                         <li className="flex items-start gap-2">
+                           {tick && (
                             <Image
-                            src="/images/tick.jpg"
+                            src={tick}
                             alt="tick"
                             width={16}
                             height={16}
                              />
-                        <p>when an unknown printer took a galley of type and scrambled <br />
-                               specimen book. It has survived.</p>
+                        )}
+                        <p>{bottomUpData?.[11]?.data} <br />
+                               {bottomUpData?.[12]?.data}</p>
                         </li>
                     </ul>
                 </div>
                 <div className="py-5 md:py-0">
+                    {okimage && (
                     <Image
-                     src="/images/okimage.jpg"
+                     src={okimage}
                      alt="okimage"
                      width={300} 
                      height={300} />
+                    )}
+                    
                 </div>
             </div>
         </section>

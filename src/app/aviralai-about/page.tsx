@@ -16,13 +16,11 @@ async function getData() {
 
   if (!res.ok) {
     const errorText = await res.text();
-    console.error('API error response:', errorText);
     throw new Error('Failed to fetch page data');
   }
 
   const data = await res.json();
   const all = data?.sections ?? [];
-  console.log("this is all data",all)
 
   
 
@@ -40,8 +38,6 @@ async function getData() {
  export default async function About () {
      const sections = await getData();
     return (
-        
-        
         <>
         <AboutBanner bannerData = {sections.bannerSection}/>
         <UpperSection upperSectionData ={sections.upperSection} />
