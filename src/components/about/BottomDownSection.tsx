@@ -14,8 +14,6 @@ const BottomDownSection:React.FC<BottomDownSectionProp> = ({bottomDownData})=>{
     //     console.log("BottomDownData:", bottomDownData);
     //   }, [bottomDownData]);
 
-        console.log("this is bottom down data",bottomDownData);
-
     const glowImage = bottomDownData?.[0]?.data
     const robot = bottomDownData?.[1]?.data
         

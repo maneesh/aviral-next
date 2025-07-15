@@ -31,7 +31,7 @@ const Navbar = () => {
         ></div>
       )}
 
-      <div className="absolute md:top-[30%]  left-4 z-20">
+      <div className="absolute md:top-[30%]   z-20">
         <span className="text-green-500 text-sm font-medium block mb-1 text-left">
           Menu
         </span>

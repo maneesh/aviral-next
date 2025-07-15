@@ -15,7 +15,6 @@ async function getData() {
   });
 
   if (!res.ok) {
-    const errorText = await res.text();
     throw new Error('Failed to fetch page data');
   }
 
