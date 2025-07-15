@@ -9,7 +9,7 @@ interface HowItWorksItem {
 interface PathtoaiProps {
   pathtoai: HowItWorksItem[];
 }
-const Pathtoai = ({ pathtoai }: PathtoaiProps) => {
+const Pathtoai = ({ pathtoai: _pathtoai }: PathtoaiProps) => {
 //   console.log(pathtoai);
 
   return (

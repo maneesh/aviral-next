@@ -19,8 +19,6 @@ async function getData() {
   );
 
   if (!res.ok) {
-    const errorText = await res.text();
-    console.error('API error response:', errorText);
     throw new Error('Failed to fetch page data');
   }
 
