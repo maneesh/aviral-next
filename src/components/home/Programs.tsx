@@ -16,12 +16,13 @@ const ICON_MAP: Record<string, JSX.Element> = {
 };
 
 export default function Program({ data }: { data: any[] }) {
+  
   // Extract background and heading
   const background = data.find((item) => item.type === "image")?.data || "";
   const heading = data.find((item) => item.type === "text")?.data || "Our Programs";
 
   // Extract text items and pair them (title + description)
-  const textItems = data.filter((item) => item.type === "text").slice(1); // skip heading
+  const textItems = data.filter((item) => item.type === "text").slice(1); 
 
   const programs = [];
   for (let i = 0; i < textItems.length; i += 2) {

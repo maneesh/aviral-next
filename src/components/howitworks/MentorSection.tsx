@@ -39,8 +39,9 @@ const MentorSection = ({mentorSection}:MentorSectionProps)=>{
          src={mentorRightBgImg}
          alt="glow image"
          width={200} 
-         height={200}
-         className="absolute right-0 hidden lg:block translate-y"
+         height={100}
+        //  className="absolute right-0 hidden lg:block translate-y"
+        className='absolute right-0 translate-y-5 hidden lg:block'
                              />
        </section>
     
