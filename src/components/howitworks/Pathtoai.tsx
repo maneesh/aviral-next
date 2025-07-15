@@ -4,6 +4,7 @@ import Image from 'next/image';
 interface HowItWorksItem {
   type: 'text' | 'image';
   data: string;
+  name:string;
 }
 
 interface PathtoaiProps {

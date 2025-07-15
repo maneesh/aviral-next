@@ -1,55 +1,87 @@
 import Image from "next/image";
 
-const ContactInformation = ()=>{
+type ContentItem = {
+    type:'text'|'image';
+    data:string;
+}
+interface InfoProp{
+    info:ContentItem[]
+}
+
+
+const ContactInformation:React.FC<InfoProp> = ({info})=>{
+    const glowImage = info?.[0]?.data
+    const locationImage = info?.[2]?.data
+    const emailtag = info?.[4]?.data
+    const contactimage = info?.[6]?.data
+    const robot  = info?.[8]?.data
+
+    //console.log("ingormation ",info);
+    
     return(
         <section className="bg-black text-white flex flex-col md:flex-row items-center justify-center md:gap-28">
+            {glowImage && (
             <Image
-            src="/images/aboutglowleft.png"
+            src={glowImage}
             alt="glow image"
             width={200}
             height={100} 
             className=" absolute left-0 -translate-y-5 hidden lg:block"/>
+            )}
+           
             <div>
-                <h1 className="text-[#3ae51d] py-5">Contact Information </h1>
+                <h1 className="text-[#3ae51d] py-5">{info?.[1]?.data}</h1>
                 <ul>
                     <li className="flex items-start gap-2">
+                    {locationImage && (
                     <Image
-                    src="/images/contactlocation.jpg"
+                    src={locationImage}
                     alt="location"
                     width={26}
                     height={34}
                     />
-                    <p>123 anywhere st.city 1233</p>
+                    )}
+                    
+                    <p>{info?.[3]?.data}</p>
                     </li>
 
                     <li className="flex items-start gap-2 py-5">
+                    {emailtag && (
                     <Image
-                    src="/images/emailtag.jpg"
+                    src={emailtag}
                     alt="email"
                     width={26}
                     height={34}
                     />
-                    <p>info.@aviralai.com</p>
+                    )}
+                    
+                    <p>{info?.[5]?.data}</p>
                     </li>
                     
                     <li className="flex items-start gap-2 ">
+                    {contactimage && (
                     <Image
-                    src="/images/contactimage.jpg"
+                    src={contactimage}
                     alt="tick"
                     width={26}
                     height={34}
                     />
-                    <p>123 456 7890</p>
+                    )}
+                   
+                    <p>{info?.[7]?.data}</p>
                     </li>
                 
                 </ul>
             </div>
             <div className="py-5 md:py-0">
-                <Image
-                src="/images/robotContact.jpg"
-                alt="robot"
-                width={225}
-                height={225} />
+            {robot && (
+            <Image
+            src={robot}
+            alt="robot"
+            width={225}
+            height={225} />
+            )}
+               
             </div>
 
         </section>
