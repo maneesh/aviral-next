@@ -4,60 +4,51 @@ import Image from "next/image";
 import Navbar from "../home/Navbar";
 import robotBannerImgAbout from "../../../public/images/aboutRobotImageBanner.png";
 
-const TBanner = () => {
+const TBanner = ({ data }: { data: any }) => {
+
+  if (!Array.isArray(data)) return null;
+
   return (
-    <section className="relative w-full h-[500px] overflow-hidden z-10">
-      {/* Background gradient */}
+    <section className="relative w-full min-h-screen overflow-hidden z-10 flex items-center">
       <div
         className="absolute inset-0 z-0"
         style={{
-          background:
-            "linear-gradient(to bottom right, rgba(3, 3, 3, 0.8), rgba(28,31,31,0.8))",
+          background: "linear-gradient(to bottom right, rgba(3, 3, 3, 0.8), rgba(28,31,31,0.8))",
         }}
       />
 
-      {/* Background image */}
       <Image
-        src="/images/bannerImg.png"
+        src={data[0]?.data || "/images/bannerImg.png"}
         alt="Hero Background"
         fill
         className="object-cover z-10 opacity-60"
         priority
       />
 
-      {/* Black top bar */}
       <div className="absolute top-0 left-0 w-full h-[50px] bg-black z-20" />
-
-      {/* Green line */}
       <div className="absolute top-[50px] left-0 w-full h-[3px] bg-green-500 z-30" />
 
-      {/* Content container */}
-      <div className="relative z-40 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 md:px-16 min-h-[300px] md:min-h-[400px] gap-6">
+      <div className="relative z-40 flex flex-col md:flex-row items-center justify-center gap-6 max-w-5xl mx-auto h-full px-4 py-10">
+        <div className="w-full md:w-1/4 flex justify-center md:justify-start mt-[50px] md:mt-[50px]">
 
-        {/* Navbar */}
-        <div className="w-full md:w-1/4 flex justify-center md:justify-start px-2">
-          <div className="w-fit">
-            <Navbar />
-          </div>
+          <Navbar />
         </div>
 
-        {/* Text Section */}
-        <div className="w-full md:w-2/4 text-center md:text-left px-2">
+        <div className="w-full md:w-2/4 text-center md:text-left mt-4 md:mt-0 mt-[50px] md:mt-[50px]">
           <h1 className="text-4xl md:text-5xl font-bold text-white">
-            <span className="text-white">aviral</span>
-            <span className="text-green-500">ai</span>{" "}
-            <span className="text-white">Training</span>
+            <span className="text-white">{data[1]?.data}</span>
+            <span className="text-green-500">{data[2]?.data}</span>{" "}
+            <span className="text-white">{data[3]?.data}</span>
           </h1>
           <p className="text-gray-300 mt-4 max-w-md text-sm md:text-base mx-auto md:mx-0">
-            Create advanced projects under guidance by the top 1%.<br />
-            Gain technologies through hands-on learning. Secure your desired future.
+            {data[4]?.data}<br />
+            {data[5]?.data}
           </p>
         </div>
 
-        {/* Robot Image */}
-        <div className="w-full md:w-1/4 flex justify-center md:justify-end px-2">
+        <div className="w-full md:w-1/4 flex justify-center mt-6 md:mt-0">
           <Image
-            src={robotBannerImgAbout}
+            src={data[6]?.data || robotBannerImgAbout}
             alt="Top Robot"
             width={220}
             height={220}
