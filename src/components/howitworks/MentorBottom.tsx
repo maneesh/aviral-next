@@ -1,14 +1,25 @@
+"use client"
 import Image from "next/image";
+interface MentorItem {
+  type: 'text' | 'image';
+  data: string;
+}
 
-const MentorBottom = ()=>{
+interface MentorBottomProps {
+  mentorBottom: MentorItem[];
+}
+const MentorBottom = ({mentorBottom}:MentorBottomProps)=>{
+    const mentorBottomIconImg = mentorBottom?.[2]?.data;
+    const mentorRoboImg = mentorBottom?.[1]?.data;
+    
     return(
      <section className="bg-black">
         <div className="flex flex-col md:flex-row text-white items-center justify-center space-x-5 text-center">
             <div>
-                <h1 >Powered by the Best in AI & EdTech</h1>
+                <h1 >{mentorBottom?.[0]?.data}</h1>
                 <div>
                 <Image
-                src="/images/allicon.jpg"
+                src={mentorBottomIconImg}
                 alt="All Icon"
                 width={600}
                 height={50} 
@@ -17,7 +28,7 @@ const MentorBottom = ()=>{
             </div>
             <div>
                 <Image
-                src="/images/HIWrobot.png"
+                src={mentorRoboImg}
                 alt="robot"
                 width={300}
                 height={250}
