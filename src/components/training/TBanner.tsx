@@ -31,11 +31,11 @@ const TBanner = () => {
       {/* Green line */}
       <div className="absolute top-[50px] left-0 w-full h-[3px] bg-green-500 z-30" />
 
-      {/* Top Robot, Navbar, and Branding - centered in one line */}
-      <div className="relative z-40 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-4 md:px-8 min-h-[300px] md:min-h-[400px] gap-4">
+      {/* Content container */}
+      <div className="relative z-40 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 md:px-16 min-h-[300px] md:min-h-[400px] gap-6">
 
         {/* Navbar */}
-        <div className="w-full md:w-1/4 flex justify-center md:justify-start">
+        <div className="w-full md:w-1/4 flex justify-center md:justify-start px-2">
           <div className="w-fit">
             <Navbar />
           </div>
@@ -55,7 +55,7 @@ const TBanner = () => {
         </div>
 
         {/* Robot Image */}
-        <div className="w-full md:w-1/4 flex justify-center md:justify-end">
+        <div className="w-full md:w-1/4 flex justify-center md:justify-end px-2">
           <Image
             src={robotBannerImgAbout}
             alt="Top Robot"
@@ -65,7 +65,6 @@ const TBanner = () => {
           />
         </div>
       </div>
-
     </section>
   );
 };
