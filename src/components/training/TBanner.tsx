@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 
-import Navbar from "../home/Navbar";
 import robotBannerImgAbout from "../../../public/images/aboutRobotImageBanner.png";
 
 interface ContentItem {
@@ -34,12 +33,10 @@ const TBanner = ({ data }: { data: ContentItem[] }) => {
       <div className="absolute top-0 left-0 w-full h-[50px] bg-black z-20" />
       <div className="absolute top-[50px] left-0 w-full h-[3px] bg-green-500 z-30" />
 
-      <div className="relative z-40 flex flex-col md:flex-row items-start justify-center gap-6 max-w-5xl mx-auto h-full px-4 py-10">
-        {/* Navbar */}
-        <div className="w-full md:w-1/4 flex justify-center md:justify-start mt-[70px]">
-          <div className="mt-16"> 
-            <Navbar />
-          </div>
+      <div className="relative z-40 flex flex-col md:flex-row items-center justify-center gap-6 max-w-5xl mx-auto h-full px-4 py-10">
+        <div className="w-full md:w-1/4 flex justify-center md:justify-start mt-[50px] md:mt-[50px]">
+
+      
         </div>
 
         {/* Hero Text */}

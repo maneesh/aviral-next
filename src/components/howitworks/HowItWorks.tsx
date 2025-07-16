@@ -4,7 +4,6 @@ import HowItWorksBanner from "./HowItWorksBanner";
 import MentorBottom from "./MentorBottom";
 import MentorSection from "./MentorSection";
 import Pathtoai from "./Pathtoai";
-import Footer from "../home/Footer";
 
 interface ContentItem {
   type: 'text' | 'image';
@@ -28,7 +27,6 @@ export default function HowItWorks({ sections }: SectionProps) {
       <Pathtoai pathtoai={sections.pathtoai} />
       <MentorSection mentorSection={sections.mentorSection} />
       <MentorBottom mentorBottom={sections.mentorBottom} />
-      <Footer />
     </>
   );
 }

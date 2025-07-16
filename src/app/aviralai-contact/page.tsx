@@ -2,7 +2,6 @@
 import ContactBanner from "@/components/contact/ContactBanner";
 import ContactInformation from "@/components/contact/ContactInformation";
 import GetInTouchSection from "@/components/contact/GetInTouchSection";
-import Footer from "@/components/home/Footer";
 
 interface ContentItem {
   type: 'text' | 'image';
@@ -47,14 +46,15 @@ async function getData(): Promise<ContactPageProps> {
   };
 }
 
-export default async function Contact() {
-  const sections = await getData();
-  return (
-    <><ContactBanner bannerSectionData={sections.bannerSection} />
-      <GetInTouchSection getInTouchData={sections.getInTouch} />
-      <ContactInformation info={sections.contactInfo} />
-      <Footer />
-    </>
-  );
+
+export default async function Contact(){
+    const sections = await getData();
+    return(
+     <><ContactBanner bannerSectionData = {sections.bannerSection}/>
+     <GetInTouchSection getInTouchData = {sections.getInTouch}/>
+     <ContactInformation info = {sections.contactInfo} />
+     </>
+    );
+
 };
 

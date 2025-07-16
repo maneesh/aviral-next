@@ -3,7 +3,6 @@ import BottomDownSection from "@/components/about/BottomDownSection";
 import BottomUpSection from "@/components/about/BottomUpSection";
 import TeamSection from "@/components/about/TeamSection";
 import UpperSection from "@/components/about/UpperSection";
-import Footer from "@/components/home/Footer";
 
 // Define types
 interface ContentItem {
@@ -24,7 +23,7 @@ interface AboutPageProps {
   bottomDown: ContentItem[];
 }
 
-// Fetch data with proper typing
+// ✅ Clean and correct version of getData()
 async function getData(): Promise<AboutPageProps> {
   const domain = "aviralai.com";
   const page = "About";
@@ -69,7 +68,6 @@ export default async function About() {
       <TeamSection teamData={team} />
       <BottomUpSection bottomUpData={bottomUp} />
       <BottomDownSection bottomDownData={bottomDown} />
-      <Footer />
     </>
   );
 }

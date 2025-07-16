@@ -5,6 +5,9 @@ import '@/styles/globals.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
 
+import Footer from '@/components/home/Footer';
+import Navbar from '@/components/home/Navbar';
+
 import { siteConfig } from '@/constant/config';
 
 // !STARTERCONF Change these default meta
@@ -49,14 +52,51 @@ export const metadata: Metadata = {
   // ],
 };
 
-export default function RootLayout({
+interface SectionItemComponent {
+  type :"text" | "image",
+  data : string,
+  name:string
+}
+
+interface SectionItem {
+  name: string;
+  contents: SectionItemComponent[];
+}
+async function getData() {
+  const domain = 'aviralai.com';
+  const page = 'Layout';
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/static?domain=${domain}&page=${encodeURIComponent(page)}`, {
+    cache: 'no-store'
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch page data');
+  }
+
+  const data = await res.json();
+  const all:SectionItem[] = data?.sections ?? [];
+
+  return {
+    navbarDetailsData: all.find((s) => s.name === 'Navbar')?.contents || [],
+    footerDetails: all.find((s) => s.name === 'Footer')?.contents || [],
+  };
+  
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const sections = await getData()
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <Navbar navbarData = {sections.navbarDetailsData}/>
+        {children}
+        <Footer footerDetails={sections.footerDetails}/>
+        </body> 
     </html>
   );
 }

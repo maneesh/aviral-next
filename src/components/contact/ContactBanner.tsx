@@ -1,4 +1,4 @@
-import Navbar from "../home/Navbar";
+
 
 type ContentItem = {
   type: 'text' | 'image';
@@ -25,7 +25,7 @@ const ContactBanner: React.FC<BannerSectionProp> = ({ bannerSectionData }) => {
       <div className="relative z-40 flex flex-col md:flex-row justify-center items-center md:items-start h-full px-4 pt-[53px] text-center md:text-left">
         {/* Left Side: Navbar */}
         <div className="flex-1 flex justify-center w-full md:w-auto md:justify-center">
-          <Navbar />
+      
         </div>
 
         {/* Right Side: Text Content */}

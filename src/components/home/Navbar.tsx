@@ -1,27 +1,45 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface MenuItem {
   name: string;
   path: string;
 }
 
+interface BaseNavbarItem {
+  data: string;
+  name: string;
+}
 
-const menuItems: MenuItem[] = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/aviralai-about" },
-  { name: "How It Works", path: "/aviralai-how-it-works" },
-  { name: "Training", path: "/aviralai-training" },
-  { name: "Contact us", path: "/aviralai-contact" },
-];
+interface ImageNavbarItem extends BaseNavbarItem {
+  type: string; // e.g., 'image'
+}
 
-const Navbar = () => {
+interface ButtonNavbarItem extends BaseNavbarItem {
+  isButton: boolean;
+}
+
+type NavbarItem = ImageNavbarItem | ButtonNavbarItem;
+
+interface NavbarProps {
+  navbarData: NavbarItem[];
+}
+
+const Navbar: React.FC<NavbarProps> = ({ navbarData }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
   const router = useRouter();
   const pathname = usePathname();
+
+  const menuItems: MenuItem[] = useMemo(() => [
+    { name: navbarData?.[0]?.name, path: navbarData?.[0]?.data },
+    { name: navbarData?.[1]?.name, path: navbarData?.[1]?.data },
+    { name: navbarData?.[2]?.name, path: navbarData?.[2]?.data },
+    { name: navbarData?.[3]?.name, path: navbarData?.[3]?.data },
+    { name: navbarData?.[4]?.name, path: navbarData?.[4]?.data },
+  ], [navbarData]);
 
   const handleMenuClick = (item: MenuItem) => {
     setActiveItem(item.name);
@@ -34,7 +52,7 @@ const Navbar = () => {
     if (currentItem) {
       setActiveItem(currentItem.name);
     }
-  }, [pathname]); 
+  }, [pathname, menuItems]);
 
   return (
     <>
@@ -48,10 +66,10 @@ const Navbar = () => {
 
       <div className="absolute md:top-[50%] z-20">
         <span className="text-green-500 text-sm font-medium block mb-1 text-left">
-          Menu
+          {navbarData?.[5]?.data}
         </span>
 
-        {/* Menu Content */}
+        {/* Dropdown Menu */}
         {showMenu && (
           <div
             className="border border-green-500 rounded-xl p-4 text-sm shadow-2xl text-black w-40 sm:w-40 max-w-[90vw] text-center relative z-30 md:translate-x-0 md:animate-slide-in-left"
@@ -70,7 +88,8 @@ const Navbar = () => {
             </div>
 
             <p className="text-2xl font-bold mb-4">
-              aviral<span className="text-green-500">ai</span>
+              {navbarData?.[6]?.data}
+              <span className="text-green-500">{navbarData?.[7]?.data}</span>
             </p>
 
             <ul className="text-sm">
@@ -79,9 +98,7 @@ const Navbar = () => {
                   key={index}
                   onClick={() => handleMenuClick(item)}
                   className={`cursor-pointer px-2 py-2 ${
-                    index !== menuItems.length - 1
-                      ? "border-b border-gray-300"
-                      : ""
+                    index !== menuItems.length - 1 ? "border-b border-gray-300" : ""
                   } ${
                     activeItem === item.name
                       ? "text-green-500 font-semibold"

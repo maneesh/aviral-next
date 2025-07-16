@@ -3,7 +3,6 @@ import * as React from 'react';
 import '@/lib/env';
 
 import Career from '@/components/home/Career';
-import Footer from '@/components/home/Footer';
 import Hero from '@/components/home/Hero';
 import Industry from '@/components/home/Industry';
 import Program from '@/components/home/Programs';
@@ -70,7 +69,6 @@ export default async function HomePage() {
       <Industry data={sections.industry} chooseUsData={sections.chooseUs} />
       <Career data={sections.career} />
       <Testimonials data={sections.testimonials} />
-      <Footer />
     </main>
   );
 }
