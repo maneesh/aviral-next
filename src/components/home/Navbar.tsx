@@ -1,13 +1,20 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+
+import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+interface MenuItem {
+  name: string;
+  path: string;
+}
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
   const router = useRouter();
+  const pathname = usePathname();
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { name: "Home", path: "/" },
     { name: "About", path: "/aviralai-about" },
     { name: "How It Works", path: "/aviralai-how-it-works" },
@@ -15,11 +22,18 @@ const Navbar = () => {
     { name: "Contact us", path: "/aviralai-contact" },
   ];
 
-  const handleMenuClick = (item: any) => {
+  const handleMenuClick = (item: MenuItem) => {
     setActiveItem(item.name);
     router.push(item.path);
     setShowMenu(false);
   };
+
+  useEffect(() => {
+    const currentItem = menuItems.find((item) => item.path === pathname);
+    if (currentItem) {
+      setActiveItem(currentItem.name);
+    }
+  }, [pathname]);
 
   return (
     <>
@@ -31,7 +45,7 @@ const Navbar = () => {
         ></div>
       )}
 
-      <div className="absolute md:top-[30%]   z-20">
+      <div className="absolute md:top-[50%] z-20">
         <span className="text-green-500 text-sm font-medium block mb-1 text-left">
           Menu
         </span>
@@ -89,8 +103,6 @@ const Navbar = () => {
           </div>
         )}
       </div>
-
-     
     </>
   );
 };

@@ -4,7 +4,8 @@ import BottomDownSection from "@/components/about/BottomDownSection";
 import BottomUpSection from "@/components/about/BottomUpSection";
 import TeamSection from "@/components/about/TeamSection";
 import UpperSection from "@/components/about/UpperSection";
-import Footer from "@/components/home/Footer"
+import Footer from "@/components/home/Footer";
+
 
 async function getData() {
   const domain = 'aviralai.com';
@@ -31,8 +32,6 @@ async function getData() {
     bottomDown: all.find((s: any) => s.name === 'BottomDownSection')?.contents || [],
   };
 }
-
-
 
  export default async function About () {
      const sections = await getData();

@@ -10,9 +10,9 @@ const TBanner = ({ data }: { data: any }) => {
   if (!Array.isArray(data)) return null;
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden z-10 flex items-center">
+    <section className="relative bg-black bg-cover bg-no-repeat bg-center border-t-4">
       <div
-        className="absolute inset-0 z-0"
+        className="absolute top-0 left-0 w-full h-[50px] bg-black z-20"
         style={{
           background: "linear-gradient(to bottom right, rgba(3, 3, 3, 0.8), rgba(28,31,31,0.8))",
         }}
@@ -29,13 +29,16 @@ const TBanner = ({ data }: { data: any }) => {
       <div className="absolute top-0 left-0 w-full h-[50px] bg-black z-20" />
       <div className="absolute top-[50px] left-0 w-full h-[3px] bg-green-500 z-30" />
 
-      <div className="relative z-40 flex flex-col md:flex-row items-center justify-center gap-6 max-w-5xl mx-auto h-full px-4 py-10">
-        <div className="w-full md:w-1/4 flex justify-center md:justify-start mt-[50px] md:mt-[50px]">
-
+      <div className="relative z-40 flex flex-col md:flex-row items-start justify-center gap-6 max-w-5xl mx-auto h-full px-4 py-10">
+        {/* Navbar */}
+        <div className="w-full md:w-1/4 flex justify-center md:justify-start mt-[70px]">
+        <div className="mt-16"> 
           <Navbar />
+          </div>
         </div>
 
-        <div className="w-full md:w-2/4 text-center md:text-left mt-4 md:mt-0 mt-[50px] md:mt-[50px]">
+        {/* Hero Text */}
+        <div className="w-full md:w-2/4 text-center md:text-left mt-[70px]">
           <h1 className="text-4xl md:text-5xl font-bold text-white">
             <span className="text-white">{data[1]?.data}</span>
             <span className="text-green-500">{data[2]?.data}</span>{" "}
@@ -47,7 +50,8 @@ const TBanner = ({ data }: { data: any }) => {
           </p>
         </div>
 
-        <div className="w-full md:w-1/4 flex justify-center mt-6 md:mt-0">
+        {/* Robot Image */}
+        <div className="w-full md:w-1/4 flex justify-center mt-6 md:mt-[70px]">
           <Image
             src={data[6]?.data || robotBannerImgAbout}
             alt="Top Robot"
@@ -57,6 +61,7 @@ const TBanner = ({ data }: { data: any }) => {
           />
         </div>
       </div>
+
     </section>
   );
 };

@@ -18,10 +18,10 @@ const HowItWorksBanner = ({ howItWorks }: HowItWorksBannerProps) => {
   const howWorkBrainLogo = howItWorks?.[6]?.data || "";
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden z-10 flex items-center">
+    <section className="relative bg-black bg-cover bg-no-repeat bg-center border-t-4">
       {/* Gradient Overlay */}
       <div
-        className="absolute inset-0 z-0"
+        className="absolute top-0 left-0 w-full h-[50px] bg-black z-20"
         style={{
           background: "linear-gradient(to bottom right, rgba(3, 3, 3, 0.8), rgba(28, 31, 31, 0.8))",
         }}
