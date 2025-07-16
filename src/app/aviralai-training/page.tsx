@@ -2,8 +2,25 @@ import React from 'react';
 
 import Training from '@/components/training/Training';
 
+interface ContentItem {
+    type: 'text' | 'image';
+    data: string;
+    name?: string;
+}
 
-async function getData() {
+interface SectionItem {
+    name: string;
+    contents: ContentItem[];
+}
+
+interface TrainingPageProps {
+    bannerSection: ContentItem[];
+    courseSection: ContentItem[];
+    faqSection: ContentItem[];
+}
+
+
+async function getData(): Promise<TrainingPageProps> {
     const domain = 'aviralai.com';
     const page = 'Training';
 
@@ -14,15 +31,15 @@ async function getData() {
         throw new Error('Failed to fetch page data');
     }
 
-    const data = await res.json();
+    const data: { sections: SectionItem[] } = await res.json();
     const all = data?.sections ?? [];
 
 
 
     return {
-    bannerSection: all.find((s: any) => s.name === 'TBanner')?.contents || [],
-    courseSection: all.find((s: any) => s.name === 'CoursePage')?.contents || [],
-    faqSection: all.find((s: any) => s.name === 'FAQSection')?.contents || [],
+        bannerSection: all.find((s) => s.name === 'TBanner')?.contents || [],
+        courseSection: all.find((s) => s.name === 'CoursePage')?.contents || [],
+        faqSection: all.find((s) => s.name === 'FAQSection')?.contents || [],
     };
 }
 

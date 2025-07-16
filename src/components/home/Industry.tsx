@@ -3,9 +3,14 @@ import React from 'react';
 import ChooseUs from './ChooseUs';
 import IndustryExpert from './IndustryExpert';
 
+interface ContentItem {
+  type: 'text' | 'image';
+  data: string;
+}
+
 interface Props {
-  data: any[];         // IndustryExpert data
-  chooseUsData: any[]; // ChooseUs data
+  data: ContentItem[];         
+  chooseUsData: ContentItem[]; 
 }
 
 const Industry: React.FC<Props> = ({ data, chooseUsData }) => {
@@ -29,8 +34,18 @@ const Industry: React.FC<Props> = ({ data, chooseUsData }) => {
 
   return (
     <>
-      <IndustryExpert title={industryTitle} points={industryPoints} background={industryBg} robotImage={industryRobot} />
-      <ChooseUs title={chooseUsTitle} points={chooseUsPoints} background={chooseUsBg} robotImage={chooseUsRobot} />
+      <IndustryExpert
+        title={industryTitle}
+        points={industryPoints}
+        background={industryBg}
+        robotImage={industryRobot}
+      />
+      <ChooseUs
+        title={chooseUsTitle}
+        points={chooseUsPoints}
+        background={chooseUsBg}
+        robotImage={chooseUsRobot}
+      />
     </>
   );
 };

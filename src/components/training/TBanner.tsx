@@ -5,8 +5,13 @@ import Image from "next/image";
 import Navbar from "../home/Navbar";
 import robotBannerImgAbout from "../../../public/images/aboutRobotImageBanner.png";
 
-const TBanner = ({ data }: { data: any }) => {
+interface ContentItem {
+  type: 'text' | 'image';
+  data: string;
+  name?: string;
+}
 
+const TBanner = ({ data }: { data: ContentItem[] }) => {
   if (!Array.isArray(data)) return null;
 
   return (
@@ -32,8 +37,8 @@ const TBanner = ({ data }: { data: any }) => {
       <div className="relative z-40 flex flex-col md:flex-row items-start justify-center gap-6 max-w-5xl mx-auto h-full px-4 py-10">
         {/* Navbar */}
         <div className="w-full md:w-1/4 flex justify-center md:justify-start mt-[70px]">
-        <div className="mt-16"> 
-          <Navbar />
+          <div className="mt-16"> 
+            <Navbar />
           </div>
         </div>
 
@@ -61,7 +66,6 @@ const TBanner = ({ data }: { data: any }) => {
           />
         </div>
       </div>
-
     </section>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface MenuItem {
@@ -8,19 +8,20 @@ interface MenuItem {
   path: string;
 }
 
+
+const menuItems: MenuItem[] = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/aviralai-about" },
+  { name: "How It Works", path: "/aviralai-how-it-works" },
+  { name: "Training", path: "/aviralai-training" },
+  { name: "Contact us", path: "/aviralai-contact" },
+];
+
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
   const router = useRouter();
   const pathname = usePathname();
-
-  const menuItems: MenuItem[] = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/aviralai-about" },
-    { name: "How It Works", path: "/aviralai-how-it-works" },
-    { name: "Training", path: "/aviralai-training" },
-    { name: "Contact us", path: "/aviralai-contact" },
-  ];
 
   const handleMenuClick = (item: MenuItem) => {
     setActiveItem(item.name);
@@ -33,7 +34,7 @@ const Navbar = () => {
     if (currentItem) {
       setActiveItem(currentItem.name);
     }
-  }, [pathname]);
+  }, [pathname]); 
 
   return (
     <>

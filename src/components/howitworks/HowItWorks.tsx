@@ -6,12 +6,18 @@ import MentorSection from "./MentorSection";
 import Pathtoai from "./Pathtoai";
 import Footer from "../home/Footer";
 
+interface ContentItem {
+  type: 'text' | 'image';
+  data: string;
+  name: string;
+}
+
 interface SectionProps {
   sections: {
-    howItWorks: any[];
-    pathtoai: any[];
-    mentorSection: any[];
-    mentorBottom: any[];
+    howItWorks: ContentItem[];
+    pathtoai: ContentItem[];
+    mentorSection: ContentItem[];
+    mentorBottom: ContentItem[];
   };
 }
 

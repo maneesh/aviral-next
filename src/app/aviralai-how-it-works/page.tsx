@@ -1,6 +1,26 @@
 import HowItWorks from "@/components/howitworks/HowItWorks";
 
-async function getData() {
+interface ContentItem {
+  type: 'text' | 'image';
+  data: string;
+  name: string;
+}
+
+interface SectionItem {
+  name: string;
+  contents: ContentItem[];
+}
+
+interface HowItWorksPageProps {
+  howItWorks: ContentItem[];
+  pathtoai: ContentItem[];
+  mentorSection: ContentItem[];
+  mentorBottom: ContentItem[];
+}
+
+
+
+async function getData(): Promise<HowItWorksPageProps> {
   const domain = 'aviralai.com';
   const page = 'HowItWorks';
 
@@ -13,16 +33,25 @@ async function getData() {
     throw new Error('Failed to fetch page data');
   }
 
-  const data = await res.json();
+  const data: { sections: SectionItem[] } = await res.json();
   const all = data?.sections ?? [];
 
 
-  return {
-    howItWorks: all.find((s: any) => s.name === 'HowItWorksBanner')?.contents || [],
-    pathtoai: all.find((s: any) => s.name === 'Pathtoai')?.contents || [],
-    mentorSection: all.find((s: any) => s.name === 'MentorSection')?.contents || [],
-    mentorBottom: all.find((s: any) => s.name === 'MentorBottom')?.contents || []
-  };
+ return {
+  howItWorks: (all.find((s) => s.name === 'HowItWorksBanner')?.contents || []).map(
+    item => ({ ...item, name: typeof item.name === 'string' ? item.name : '' })
+  ),
+  pathtoai: (all.find((s) => s.name === 'Pathtoai')?.contents || []).map(
+    item => ({ ...item, name: typeof item.name === 'string' ? item.name : '' })
+  ),
+  mentorSection: (all.find((s) => s.name === 'MentorSection')?.contents || []).map(
+    item => ({ ...item, name: typeof item.name === 'string' ? item.name : '' })
+  ),
+  mentorBottom: (all.find((s) => s.name === 'MentorBottom')?.contents || []).map(
+    item => ({ ...item, name: typeof item.name === 'string' ? item.name : '' })
+  ),
+};
+
 }
 
 export default async function HowItWorksPage() {

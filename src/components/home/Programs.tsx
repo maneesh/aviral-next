@@ -9,6 +9,11 @@ import {
 
 import ProgramCard from "./ProgramCard";
 
+interface ContentItem {
+  type: 'text' | 'image';
+  data: string;
+}
+
 const ICON_MAP: Record<string, JSX.Element> = {
   "Data Science": <FaDatabase />,
   "Data Analytics": <FaChartBar />,
@@ -16,14 +21,13 @@ const ICON_MAP: Record<string, JSX.Element> = {
   "Training": <FaChalkboardTeacher />,
 };
 
-export default function Program({ data }: { data: any[] }) {
-  
+export default function Program({ data }: { data: ContentItem[] }) {
   // Extract background and heading
   const background = data.find((item) => item.type === "image")?.data || "";
   const heading = data.find((item) => item.type === "text")?.data || "Our Programs";
 
   // Extract text items and pair them (title + description)
-  const textItems = data.filter((item) => item.type === "text").slice(1); 
+  const textItems = data.filter((item) => item.type === "text").slice(1);
 
   const programs = [];
   for (let i = 0; i < textItems.length; i += 2) {

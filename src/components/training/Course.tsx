@@ -6,30 +6,31 @@ import { BiSolidPlaneAlt } from 'react-icons/bi';
 import { FaCheckCircle } from 'react-icons/fa';
 import { IoSettings } from 'react-icons/io5';
 
+interface CourseContentItem {
+  type: 'text' | 'image';
+  data: string;
+  name?: string;
+}
+
 interface Benefit {
   icon: React.ReactNode;
   title: string;
   description: string;
 }
 
-export default function CoursePage({ data }: { data: any[] }) {
+export default function CoursePage({ data }: { data: CourseContentItem[] }) {
+  const leftSideImg = data?.[10]?.data;
+  const rightSideImg = data?.[9]?.data;
+  const learnImage = data?.[0]?.data;
 
-  const leftSideImg = data?.[10]?.data
-  const rightSideImg = data?.[9]?.data
-
-  //console.log("course ",leftSideImg);
-  
-
-  // Auto-pick icon based on title
   const getIconByTitle = (title: string): React.ReactNode => {
     const lower = title.toLowerCase();
     if (lower.includes('career') || lower.includes('growth')) return <BiSolidPlaneAlt />;
     if (lower.includes('instruction') || lower.includes('settings')) return <IoSettings />;
     if (lower.includes('hands-on') || lower.includes('project')) return <IoSettings />;
-    return <IoSettings />; // default
+    return <IoSettings />;
   };
 
-  // Get section headings
   const getHeading = (title: string): string =>
     data.find(item => item.type === 'text' && item.data === title)?.data ?? title;
 
@@ -37,9 +38,6 @@ export default function CoursePage({ data }: { data: any[] }) {
   const headingOverview = getHeading('Course Overview');
   const headingBenefits = getHeading('Key Benefits');
 
-  // Get images
-  const learnImage =data?.[0]?.data
-  // Learn points (exclude headings)
   const learnPoints: string[] = data
     .filter(item => item.type === 'text' && !item.name)
     .filter(
@@ -48,9 +46,7 @@ export default function CoursePage({ data }: { data: any[] }) {
         !item.data.includes('Gain expertise')
     )
     .map(item => item.data);
-    //console.log(learnPoints)
 
-  // Course overview text
   const courseOverview =
     data.find(
       item =>
@@ -59,46 +55,42 @@ export default function CoursePage({ data }: { data: any[] }) {
         item.data?.includes('Gain expertise')
     )?.data ?? '';
 
-  // Key benefits
   const benefits: Benefit[] = data
     .filter(item => item.type === 'text' && item.name)
     .map(item => {
+      if (!item.name) return null;
+
       const icon = getIconByTitle(item.name);
       return {
         icon,
         title: item.name,
         description: item.data,
       };
-    });
+    })
+    .filter((b): b is Benefit => b !== null);
+
 
   return (
     <div className="min-h-screen bg-black text-white py-10 relative overflow-hidden">
-     {/* Decorative Background Grids */}
-      {/* <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
-        <div className="hidden md:block absolute left-0 top-0 h-full w-1/4 bg-[url('/grid-left.png')] bg-no-repeat bg-contain" />
-        <div className="hidden md:block absolute right-0 top-0 h-full w-1/4 bg-[url('/grid-right.png')] bg-no-repeat bg-contain" />
-      </div> */}
-
-      {/* Side Glow Images */}
       <div className="absolute left-0 bottom-0 z-0 hidden lg:block">
-       {leftSideImg && (<Image src={leftSideImg} alt="left glow" width={100} height={100} />)} 
+        {leftSideImg && <Image src={leftSideImg} alt="left glow" width={100} height={100} />}
       </div>
       <div className="absolute right-0 bottom-0 z-0 hidden lg:block">
-       {rightSideImg && (<Image src={rightSideImg} alt="right glow" width={100} height={100} />)} 
+        {rightSideImg && <Image src={rightSideImg} alt="right glow" width={100} height={100} />}
       </div>
 
-      {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 space-y-20">
-        {/* What You Will Learn Section */}
         <div className="flex flex-col md:flex-row items-start gap-10">
           <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-            <Image
-              src={learnImage}
-              alt="Robot learning illustration"
-              width={300}
-              height={300}
-              className="object-contain"
-            />
+            {learnImage && (
+              <Image
+                src={learnImage}
+                alt="Robot learning illustration"
+                width={300}
+                height={300}
+                className="object-contain"
+              />
+            )}
           </div>
 
           <div className="w-full md:w-1/2">
@@ -106,21 +98,20 @@ export default function CoursePage({ data }: { data: any[] }) {
               {headingLearn}
             </h2>
             {Array.from({ length: 4 }).map((_, listIndex) => (
-           <ul key={listIndex} className="space-y-4 mb-8">
-           {learnPoints.map((point, idx) => (
-           <li key={`${listIndex}-${idx}`} className="flex items-start gap-4">
-            <span className="text-green-400 mt-1">
-            <FaCheckCircle />
-            </span>
-           <span>{point}</span>
-          </li>
-           ))}
-          </ul>
-          ))}
+              <ul key={listIndex} className="space-y-4 mb-8">
+                {learnPoints.map((point, idx) => (
+                  <li key={`${listIndex}-${idx}`} className="flex items-start gap-4">
+                    <span className="text-green-400 mt-1">
+                      <FaCheckCircle />
+                    </span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            ))}
           </div>
         </div>
 
-        {/* Course Overview Section */}
         <div className="w-full">
           <h3 className="text-2xl md:text-3xl font-bold text-green-400 mb-4">
             {headingOverview}
@@ -128,7 +119,6 @@ export default function CoursePage({ data }: { data: any[] }) {
           <p className="text-gray-300">{courseOverview}</p>
         </div>
 
-        {/* Key Benefits Section */}
         <div className="w-full">
           <h3 className="text-2xl md:text-3xl font-bold text-green-400 mb-8">
             {headingBenefits}
