@@ -3,6 +3,8 @@
 import Image from "next/image";
 import React from "react";
 
+import Navbar from "../home/Navbar";
+
 type ContentItem = {
   type: "text" | "image";
   data: string;
@@ -31,7 +33,7 @@ const AboutBanner: React.FC<BannerSectionProps> = ({ bannerData }) => {
       <div className="relative z-40 flex flex-col md:flex-row items-center justify-between gap-8 px-4 md:px-10 lg:px-24 xl:px-36 py-20">
         {/* Navbar */}
         <div className="w-full md:w-1/3 flex justify-center md:justify-start">
-        
+        <Navbar />
         </div>
 
         {/* Heading Text */}

@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 
+import Navbar from "../home/Navbar";
+
 interface HowItWorksItem {
   type: "text" | "image";
   data: string;
@@ -40,7 +42,7 @@ const HowItWorksBanner = ({ howItWorks }: HowItWorksBannerProps) => {
       <div className="relative z-40 flex flex-col md:flex-row items-center justify-center gap-6 max-w-5xl mx-auto h-full px-4 py-10">
         {/* Optional Navbar (same as TBanner) */}
         <div className="w-full md:w-1/4 flex justify-center md:justify-start mt-[50px]">
-        
+        <Navbar />
         </div>
 
         {/* Text Section */}

@@ -35,7 +35,6 @@ async function getData(): Promise<TrainingPageProps> {
     const all = data?.sections ?? [];
 
 
-
     return {
         bannerSection: all.find((s) => s.name === 'TBanner')?.contents || [],
         courseSection: all.find((s) => s.name === 'CoursePage')?.contents || [],

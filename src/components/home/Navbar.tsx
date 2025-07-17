@@ -1,45 +1,38 @@
-"use client";
+'use client';
 
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useMemo, useState } from 'react';
+
+import { fetchNavbarData, NavbarItem } from '../../app/navbarData'; 
 
 interface MenuItem {
   name: string;
   path: string;
 }
 
-interface BaseNavbarItem {
-  data: string;
-  name: string;
-}
-
-interface ImageNavbarItem extends BaseNavbarItem {
-  type: string; // e.g., 'image'
-}
-
-interface ButtonNavbarItem extends BaseNavbarItem {
-  isButton: boolean;
-}
-
-type NavbarItem = ImageNavbarItem | ButtonNavbarItem;
-
-interface NavbarProps {
-  navbarData: NavbarItem[];
-}
-
-const Navbar: React.FC<NavbarProps> = ({ navbarData }) => {
+const Navbar: React.FC = () => {
+  const [navbarData, setNavbarData] = useState<NavbarItem[]>([]);
   const [showMenu, setShowMenu] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
+
   const router = useRouter();
   const pathname = usePathname();
 
-  const menuItems: MenuItem[] = useMemo(() => [
-    { name: navbarData?.[0]?.name, path: navbarData?.[0]?.data },
-    { name: navbarData?.[1]?.name, path: navbarData?.[1]?.data },
-    { name: navbarData?.[2]?.name, path: navbarData?.[2]?.data },
-    { name: navbarData?.[3]?.name, path: navbarData?.[3]?.data },
-    { name: navbarData?.[4]?.name, path: navbarData?.[4]?.data },
-  ], [navbarData]);
+  useEffect(() => {
+    const loadNavbar = async () => {
+      const data = await fetchNavbarData();
+      setNavbarData(data);
+    };
+
+    loadNavbar();
+  }, []);
+
+  const menuItems: MenuItem[] = useMemo(() => {
+    return navbarData.slice(0, 5).map((item) => ({
+      name: item.name,
+      path: item.data,
+    }));
+  }, [navbarData]);
 
   const handleMenuClick = (item: MenuItem) => {
     setActiveItem(item.name);
@@ -56,12 +49,8 @@ const Navbar: React.FC<NavbarProps> = ({ navbarData }) => {
 
   return (
     <>
-      {/* Overlay */}
       {showMenu && (
-        <div
-          className="fixed inset-0 bg-black/40 z-10"
-          onClick={() => setShowMenu(false)}
-        ></div>
+        <div className="fixed inset-0 bg-black/40 z-10" onClick={() => setShowMenu(false)} />
       )}
 
       <div className="absolute md:top-[50%] z-20">
@@ -69,17 +58,15 @@ const Navbar: React.FC<NavbarProps> = ({ navbarData }) => {
           {navbarData?.[5]?.data}
         </span>
 
-        {/* Dropdown Menu */}
         {showMenu && (
           <div
-            className="border border-green-500 rounded-xl p-4 text-sm shadow-2xl text-black w-40 sm:w-40 max-w-[90vw] text-center relative z-30 md:translate-x-0 md:animate-slide-in-left"
+            className="border border-green-500 rounded-xl p-4 text-sm shadow-2xl text-black w-40 max-w-[90vw] text-center relative z-30 md:translate-x-0 md:animate-slide-in-left"
             style={{
               backgroundColor: "rgba(255, 255, 255, 0.85)",
               backdropFilter: "blur(6px)",
               WebkitBackdropFilter: "blur(6px)",
             }}
           >
-            {/* Close icon */}
             <div
               onClick={() => setShowMenu(false)}
               className="absolute top-2 right-2 text-xl text-black cursor-pointer hover:text-red-500"
@@ -112,7 +99,6 @@ const Navbar: React.FC<NavbarProps> = ({ navbarData }) => {
           </div>
         )}
 
-        {/* Hamburger Icon */}
         {!showMenu && (
           <div className="cursor-pointer z-30" onClick={() => setShowMenu(true)}>
             <div className="w-6 h-0.5 bg-white mb-1"></div>

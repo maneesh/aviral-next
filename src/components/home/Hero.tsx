@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 
+import Navbar from "./Navbar";
+
 interface HeroProps {
   data: { type: string; data: string }[];
 }
@@ -42,7 +44,7 @@ const Hero = ({ data }: HeroProps) => {
       <div className="relative z-40 flex flex-col md:flex-row items-center justify-center gap-8 px-4 sm:px-6 pt-10 min-h-screen text-white max-w-6xl mx-auto">
         {/* Navbar */}
         <div className="w-full md:w-1/3 flex justify-center md:justify-start pt-6 md:pt-0">
-  
+          <Navbar />
         </div>
 
         {/* Hero text */}

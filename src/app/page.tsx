@@ -44,7 +44,7 @@ async function getData(): Promise<HomePageProps> {
 
   const data: { sections: SectionItem[] } = await res.json();
   const all = data?.sections ?? [];
-
+  
   return {
     hero: all.find((s) => s.name === 'Hero')?.contents || [],
     program: all.find((s) => s.name === 'Program')?.contents || [],

@@ -6,7 +6,6 @@ import '@/styles/globals.css';
 import '@/styles/colors.css';
 
 import Footer from '@/components/home/Footer';
-import Navbar from '@/components/home/Navbar';
 
 import { siteConfig } from '@/constant/config';
 
@@ -78,7 +77,6 @@ async function getData() {
   const all:SectionItem[] = data?.sections ?? [];
 
   return {
-    navbarDetailsData: all.find((s) => s.name === 'Navbar')?.contents || [],
     footerDetails: all.find((s) => s.name === 'Footer')?.contents || [],
   };
   
@@ -93,7 +91,6 @@ export default async function RootLayout({
   return (
     <html>
       <body>
-        <Navbar navbarData = {sections.navbarDetailsData}/>
         {children}
         <Footer footerDetails={sections.footerDetails}/>
         </body> 

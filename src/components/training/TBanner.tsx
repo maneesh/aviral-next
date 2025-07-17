@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import robotBannerImgAbout from "../../../public/images/aboutRobotImageBanner.png";
+import Navbar from "../home/Navbar";
 
 interface ContentItem {
   type: 'text' | 'image';
@@ -35,8 +35,8 @@ const TBanner = ({ data }: { data: ContentItem[] }) => {
 
       <div className="relative z-40 flex flex-col md:flex-row items-center justify-center gap-6 max-w-5xl mx-auto h-full px-4 py-10">
         <div className="w-full md:w-1/4 flex justify-center md:justify-start mt-[50px] md:mt-[50px]">
+          <Navbar />
 
-      
         </div>
 
         {/* Hero Text */}
@@ -53,15 +53,22 @@ const TBanner = ({ data }: { data: ContentItem[] }) => {
         </div>
 
         {/* Robot Image */}
+        {/* Robot Image */}
         <div className="w-full md:w-1/4 flex justify-center mt-6 md:mt-[70px]">
-          <Image
-            src={data[6]?.data || robotBannerImgAbout}
-            alt="Top Robot"
-            width={220}
-            height={220}
-            className="mx-auto"
-          />
+          {data
+            .filter(item => item.type === 'image' && item.data.includes('robot'))
+            .map((img, idx) => (
+              <Image
+                key={idx}
+                src={img.data}
+                alt="Top Robot"
+                width={220}
+                height={220}
+                className="mx-auto"
+              />
+            ))}
         </div>
+
       </div>
     </section>
   );
