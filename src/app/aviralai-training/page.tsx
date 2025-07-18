@@ -22,7 +22,7 @@ interface TrainingPageProps {
 
 async function getData(): Promise<TrainingPageProps> {
     const domain = 'aviralai.com';
-    const page = 'Training';
+    const page = 'training';
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/static?domain=${domain}&page=${encodeURIComponent(page)}`, {
         cache: 'no-store'
@@ -33,7 +33,6 @@ async function getData(): Promise<TrainingPageProps> {
 
     const data: { sections: SectionItem[] } = await res.json();
     const all = data?.sections ?? [];
-
 
     return {
         bannerSection: all.find((s) => s.name === 'TBanner')?.contents || [],

@@ -6,7 +6,7 @@ const nextConfig = {
 
   reactStrictMode: true,
   swcMinify: true,
-    images: {
+  images: {
     domains: ['ik.imagekit.io'],
   },
 
@@ -47,7 +47,10 @@ const nextConfig = {
     );
 
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
-    fileLoaderRule.exclude = /\.svg$/i;
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/i;
+    }
+
 
     return config;
   },
