@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import * as React from 'react';
 import '@/lib/env';
 
@@ -28,6 +27,11 @@ interface HomePageProps {
   testimonials: ContentItem[];
 }
 
+// ✅ Use the Metadata API (new way to define <head> content)
+export const metadata = {
+  title: 'Aviral AI - Home',
+  description: 'Welcome to Aviral AI – Your future in AI starts here.',
+};
 
 async function getData(): Promise<HomePageProps> {
   const domain = 'aviralai.com';
@@ -60,10 +64,6 @@ export default async function HomePage() {
 
   return (
     <main>
-      <Head>
-        <title>Aviral AI - Home</title>
-      </Head>
-
       <Hero data={sections.hero} />
       <Program data={sections.program} />
       <Industry data={sections.industry} chooseUsData={sections.chooseUs} />
